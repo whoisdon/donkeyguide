@@ -48,7 +48,6 @@ While it's not strictly essential, we recommend using `Visual Studio Code` (VSCo
 
 When you open VSCode, you will encounter something like this:
 
-![](./images/vscode.PNG)
 Not very appealing, don't you think? But don't worry, we can make it better!
 
 <!-- Links -->
