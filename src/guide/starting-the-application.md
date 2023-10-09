@@ -19,7 +19,7 @@ TOKEN=your-token-goes-here
 ```
 In this way:
 
-![](./images/starting-the-application/env.PNG)
+![](./images/starting-the-application/env.png)
 
 Following the same installation process as the discord.js module, we will install the dotenv module, which is responsible for connecting us to the environment variables.
 
@@ -32,7 +32,7 @@ npm i dotenv
 
 In node.js, the default module type is CommonJS, which is widely used. However, in this tutorial, we will be taking a different approach, aligning ourselves with the latest ECMAScript (ES) standards. We will be using the `type module`, a more recent and flexible feature for managing modules in node.js applications. This will allow us to take advantage of advanced module import and export capabilities, providing greater flexibility and readability to our code.
 
-![](./images/starting-the-application/type-module.PNG)
+![](./images/starting-the-application/type-module.png)
 
 ### Setting up the main file
 
