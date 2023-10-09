@@ -3,10 +3,8 @@ module.exports = {
   description: "Where technical teams document",
 
   head: [
-    ['link', { rel: "icon", type: "image/png", sizes: "32x24", href: "/donkey_favicon_32_24.png" }],
-    ['link', { rel: "icon", type: "image/png", sizes: "16x12", href: "/donkey_favicon_16_12.png" }],
     ['link', { rel: 'shortcut icon', type: 'image/x-icon', href: '/donkey_favicon_shortcut.ico' }],
-    ["meta", { name: "theme-color", content: "#3eaf7c" }],
+    ["meta", { name: "theme-color", content: "#190804" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     ['meta', { property: 'og:title', content: 'A guide for donkeys' }],
 		['meta', { property: 'og:description', content: 'Picture a guide... so simple even a donkey can grasp.' }],
