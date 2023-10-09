@@ -6,7 +6,7 @@
   "author": ".",
   "scripts": {
     "docs:dev": "vuepress dev src",
-    "docs:build": "NODE_ENV=production vuepress build src"
+    "docs:build": "NODE_ENV=production vuepress build"
   },
   "license": "MIT",
   "dependencies": {
