@@ -47,7 +47,7 @@ While it's not strictly essential, we recommend using `Visual Studio Code` (VSCo
 
 When you open VSCode, you will encounter something like this:
 
-![](./images/installation-preparations/vscode.PNG)
+![](./images/installation-preparations/vscode.png)
 Not very appealing, don't you think? But don't worry, we can make it better!
 
 ### Setting up project folder
@@ -65,7 +65,7 @@ The action of downloading extensions is strictly optional and does not impact th
 :::
 
 Navigate to the left-hand corner and click on the grid icon in 'Extensions.'
-![](./images/installation-preparations/extension.PNG)
+![](./images/installation-preparations/extension.png)
 
 ### Theme
 
@@ -82,7 +82,7 @@ Now, let's enter 'omni' into the search bar and then click on the 'Install' butt
 ![](./images/installation-preparations/omni-theme.png)
 
 As we mentioned, quite charming, wouldn't you agree?
-![](./images/installation-preparations/viewer-theme.PNG)
+![](./images/installation-preparations/viewer-theme.png)
 
 ### Icons
 
@@ -96,10 +96,10 @@ Now, it's time to select an icon theme to enhance our VSCode environment. While 
 
 Feel free to browse and choose the icon theme that complements your coding experience!
 
-![](./images/installation-preparations/material-icons.PNG)
+![](./images/installation-preparations/material-icons.png)
 
 I highly recommend using the 'Material Theme Icons Ocean' to complement our 'Omni' theme.
-![](./images/installation-preparations/recommended.PNG)
+![](./images/installation-preparations/recommended.png)
 
 ## Installing Discord.js
 
@@ -121,7 +121,7 @@ Once the terminal is open, execute the command:
 npm i discord.js
 ```
 Now, just wait for the module to install, and if everything goes well, it will return something like this:
-![](./images/installation-preparations/success-install.PNG)
+![](./images/installation-preparations/success-install.png)
 
 ## Creating and configuring a bot
 
