@@ -6,7 +6,7 @@
   "author": ".",
   "scripts": {
     "docs:dev": "vuepress dev src",
-    "docs:build": "NODE_ENV=production vuepress build"
+    "docs:build": "NODE_OPTIONS='--openssl-legacy-provider' vuepress build"
   },
   "license": "MIT",
   "dependencies": {
