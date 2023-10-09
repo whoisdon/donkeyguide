@@ -6,7 +6,7 @@
   "author": "WWebJS Contributors",
   "scripts": {
     "docs:dev": "vuepress dev src",
-    "docs:build": "vuepress build src"
+    "docs:build": "NODE_ENV=production vuepress build src"
   },
   "license": "MIT",
   "dependencies": {
@@ -16,6 +16,6 @@
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "@vuepress/plugin-medium-zoom": "^1.8.2",
-    "vuepress": "^1.5.3"
+    "vuepress-vite": "^2.0.0-beta.24"
   }
 }
