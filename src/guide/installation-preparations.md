@@ -50,6 +50,22 @@ When you open VSCode, you will encounter something like this:
 ![](./images/installation-preparations/vscode.png)
 Not very appealing, don't you think? But don't worry, we can make it better!
 
+### Auto Save
+
+One of the standout features of VSCode is the 'Auto Save' feature, which plays a pivotal role in developer productivity and experience. It is an integrated functionality within Visual Studio Code that, as the name suggests, automates the process of saving open files in the editor. It eliminates the need to manually press 'Ctrl + S' or 'Cmd + S' to save your changes.
+
+Now, let's enable auto-save. To do this, click on the option located in the upper left corner of your VSCode, represented by the first icon in the menu:
+
+:::warning
+You can also find this option in the header of VSCode at the top, labeled as "File".
+:::
+
+![](./images/installation-preparations/autosave.png)
+
+So, let's navigate to the "File" option and enable auto save.
+
+![](./images/installation-preparations/success-autosave.png)
+
 ### Setting up project folder
 :::tip
 The name of this folder specifically will not affect the course of the project, so you can choose any name for this folder.
@@ -108,7 +124,7 @@ To install the discord.js module, we use the default package manager for node.js
 Now, let's open a terminal. To do that, click on the option located in the top left corner of your VSCode, represented by the first icon in the menu:
 
 :::warning
-You can also find this option in the header of VSCode, at the top, labeled as 'Terminal'.
+You can also find this option in the header of VSCode, at the top, labeled as "Terminal".
 :::
 
 ![](./images/installation-preparations/new-terminal.png)
