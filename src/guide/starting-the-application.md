@@ -323,6 +323,8 @@ export default class extends EventMap {
     const commandName = interaction.commandName;
     const command = this.client.SlashCommandArray.find((c) => c.name === commandName);
 
+    if (!command) return;
+
     command.run(interaction);
   }
 }
