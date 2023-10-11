@@ -212,6 +212,162 @@ If configured correctly, everything will look like this:
 
 ![](./images/starting-the-application/slashcommand-class.png)
 
+### PrefixCommands
+
+Alright, we've added SlashCommands, but why not `PrefixCommands`? It's a valid question, and in this section, we'll explain how to add PrefixCommands to the structure. Remember that these are entirely optional, just like SlashCommands.
+
+First, let's return to our `Client.js` file, where we will add the `PrefixCommands` by including the following content:
+
+```js
+async getPrefixCommands(path = 'src/PrefixCommands') {
+    const categories = readdirSync(path);
+    for (const category of categories) {
+      const commands = readdirSync(`${path}/${category}`);
+
+      for (const command of commands) {
+        const commandFile = join(process.cwd(), `${path}/${category}/${command}`);
+        const { default: PrefixCommands } = await import('file://' + commandFile);
+        const cmd = new PrefixCommands(this);
+        
+        this.PrefixCommandArray.push(cmd);
+      }
+    }
+}
+```
+Next, we will call this method in the constructor precisely to register our `PrefixCommands:`
+
+```js
+export default class extends Client {
+    constructor(options) {
+        super(options);
+
+        this.SlashCommandArray = [];
+        this.PrefixCommandArray = [];
+        this.getPrefixCommands();
+        this.getSlashCommands();
+        this.getEvents();
+    }
+```
+And if you're as sharp as I am, everything will look like this:
+
+![](./images/starting-the-application/getprefix.png)
+
+But hold on, we're not quite done yet. We still need to add the class that defines our PrefixCommands. To do this, navigate to the `Structure` folder and create a file named `PrefixCommands.js` for this purpose. Include the following content in the file:
+
+```js
+class PrefixCommands {
+  constructor(client, options) {
+    this.client = client;
+    this.name = options.name;
+    this.description = options?.description;
+    this.aliases = options?.aliases;
+  }
+}
+
+export default PrefixCommands;
+```
+
+![](./images/starting-the-application/prefixcommand-class.png)
+
 ## Events
 
 Events serve as the notifications or signals that something has happened within Discord, such as a user sending a message or a server member joining. In Discord.js, we capture and process these events to create specific responses or functionalities in our bot.
+
+### ready
+:::tip
+If you didn't add the `registerCommands` method to your `Client.js` file, simply remove the `await this.client.registerCommands();` from the code below.
+:::
+
+Now, remember when we configured our `ready` event in the test we conducted? We'll do the same thing, but this time using classes instead of the raw approach. 
+
+We will create an `Events` folder inside the `src` directory. Inside this `Events` folder, we'll create a subfolder named `Client` and create a file named `ReadyEvent.js` with the following content:
+
+```js
+import EventMap from '../../Structure/EventMap.js';
+
+export default class extends EventMap {
+  constructor(client) {
+    super(client, {
+      name: 'ready',
+      once: true
+    });
+  }
+  run = async () => {
+    await this.client.registerCommands(); // We use 'this.client' to reference our extended class from the 'Client.js' file.
+    console.log(`Ready! Logged in as ${this.client.user.tag}`); 
+  };
+};
+```
+If you, just like me, have done everything correctly, it will look like this:
+
+![](./images/starting-the-application/ready-event.png)
+
+### interactionCreate
+
+:::warning
+This section will be applicable only to those who have configured the `SlashCommands`. If you haven't configured them, please refer to the [`SlashCommands`](#slashcommands) section or simply proceed to the next step.
+:::
+
+Okay, just like we created and configured our `ready` event, we'll do the same for our `interactionCreate` event. We'll add a subfolder within the 'Events' directory called '`Interaction` and place our `interactionCreate.js` file inside with the following content:
+
+```js
+import EventMap from '../../Structure/EventMap.js';
+
+export default class extends EventMap {
+  constructor(client) {
+    super(client, {
+      name: 'interactionCreate'
+    });
+  }
+  run = async (interaction) => {
+    const commandName = interaction.commandName;
+    const command = this.client.SlashCommandArray.find((c) => c.name === commandName);
+
+    command.run(interaction);
+  }
+}
+```
+Now, everything will look like this:
+
+![](./images/starting-the-application/interactionCreate-event.png)
+
+### messageCreate
+
+:::warning
+This section will be applicable only to those who have configured the `PrefixCommands`. If you haven't configured them, please refer to the [`PrefixCommands`](#prefixcommands) section or simply proceed to the next step.
+:::
+
+Following the section above, we will create a subfolder within the `Events` folder named `Message` and include a file called `messageCreate.js` with the following content:
+
+```js
+import EventMap from '../../Structure/EventMap.js';
+
+export default class extends EventMap {
+    constructor(client) {
+        super(client, {
+            name: 'messageCreate'
+        });
+    }
+    run = async (message) => {
+        if (message.author.bot) return;
+
+        const prefix = '--'; // change the prefix here
+        if (!message.content.toLowerCase().startsWith(prefix)) return;
+
+        const content = message.content.slice(prefix.length).trim();
+        const [cmd, ...args] = content.split(" ");
+        const command = this.client.PrefixCommandArray.find((c) => c.name === cmd.toLowerCase() || c.aliases?.includes(cmd.toLowerCase()))
+
+        if (!command) return;
+
+        command.run(message, args);
+    }
+}
+```
+I think you're already tired of hearing this, but everything will look like this:
+
+![](./images/starting-the-application/messageCreate-event.png)
+
+## Creating SlashCommands
+
+Perhaps this is the most crucial module so far. We'll create our first slash command to check if everything is in order. First, let's create a folder named `SlashCommands` inside the `src` directory. Within the `SlashCommands` folder, we'll establish a subfolder named `Test` with a file named `TestCommand.js` with the following content:
