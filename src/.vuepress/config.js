@@ -7,7 +7,7 @@ module.exports = {
     ["meta", { name: "theme-color", content: "#190804" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     ['meta', { property: 'og:title', content: 'A guide for donkeys' }],
-		['meta', { property: 'og:description', content: 'Picture a guide... so simple even a donkey can grasp.' }],
+    ['meta', { property: 'og:description', content: 'Picture a guide... so simple even a donkey can grasp.' }],
     ['meta', { property: 'og:image', content: '/donkey.png' }],
     ['meta', { property: 'og:url', content: 'https://donkeyguide.vercel.app' }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "black" } ],
