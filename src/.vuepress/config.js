@@ -41,7 +41,8 @@ module.exports = {
           collapsable: false,
           children: [
             "installation-preparations",
-            "starting-the-application"
+            "starting-the-application",
+            "advanced-implementation.md"
           ],
         },
       ],
