@@ -1,6 +1,5 @@
 ---
 title: Introduction
-description: How to connect and send/receive messages
 ---
 
 # Before starting
