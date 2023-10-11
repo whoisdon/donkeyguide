@@ -14,9 +14,9 @@ module.exports = {
   ],
 
   themeConfig: {
-    repo: "whoisdon/CommunityStructure",
-    docsRepo: "whoisdon/CommunityStructure",
-    docsBranch: "Kuruminha",
+    repo: "whoisdon/donkeyguide",
+    docsRepo: "whoisdon/donkeyguide",
+    docsBranch: "main",
     editLinks: true,
     lastUpdated: "Last Updated",
     sidebarDepth: 3,
@@ -31,7 +31,7 @@ module.exports = {
       },
       {
         text: "Issues",
-        link: "https://github.com/whoisdon/communitystructure/issues",
+        link: "https://github.com/whoisdon/donkeyguide/issues",
       },
     ],
     sidebar: {
