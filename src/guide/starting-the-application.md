@@ -150,6 +150,22 @@ export default class extends Client {
     await this.application.commands.set(this.SlashCommandArray)
   }
 
+  async getSlashCommands(path = 'src/SlashCommands') {
+    const categories = readdirSync(path);
+  
+    for (const category of categories) {
+      const commands = readdirSync(`${path}/${category}`);
+  
+      for (const command of commands) {
+        const commandFile = join(process.cwd(), `${path}/${category}/${command}`);
+        const { default: SlashCommands } = await import('file://' + commandFile);
+        const cmd = new SlashCommands(this);
+
+        this.SlashCommandArray.push(cmd);
+      }
+    }
+  }
+
   async getEvents(path = 'src/Events') {
     const eventsFolders = readdirSync(path);
     for (const folders of eventsFolders) {
@@ -370,6 +386,68 @@ I think you're already tired of hearing this, but everything will look like this
 
 ![](./images/starting-the-application/messageCreate-event.png)
 
-## Creating SlashCommands
+## Creating `SlashCommands`
 
 Perhaps this is the most crucial module so far. We'll create our first slash command to check if everything is in order. First, let's create a folder named `SlashCommands` inside the `src` directory. Within the `SlashCommands` folder, we'll establish a subfolder named `Test` with a file named `TestCommand.js` with the following content:
+
+```js
+import SlashCommands from '../../Structure/SlashCommands.js';
+import { SlashCommandBuilder } from 'discord.js';
+
+export default class extends SlashCommands {
+  constructor(client) {
+    super(client, {
+      data: new SlashCommandBuilder()
+        .setName('test')
+        .setDescription('.')  
+    });
+  }
+
+  run = async (interaction) => {
+    interaction.reply({ content: 'hello world' })
+  }
+}
+```
+
+Having said that, everything will look like this:
+
+![](./images/starting-the-application/slashcommand-test.png)
+
+Now it's time for the truth. Let's see if everything in our structure is functional and harmonious. Let's open a new terminal and run the command `node .`
+
+:::warning
+If you have implemented the [`PrefixCommands`](#prefixcommands), your application will not start at this point. You will launch it in the following module.
+:::
+
+![](./images/starting-the-application/finish-slash.png)
+
+Congratulations, our application is online and functional! Now, all you need to do is fill it with fun and creative commands to turn it into a great bot. When you're ready and feel confident with the structure we just implemented, you can move on to the next module, which covers [`Advanced implementation`](./advanced-implementation.md), to take this structure to the next level.
+
+## Creating `PrefixCommands`
+
+Following the same structure as above, we will create a folder named `PrefixCommands`. Inside it, we will create a subfolder named `Test`, and within this folder, we will create the file `TestCommand.js` with the content below:
+
+```js
+import PrefixCommands from '../../Structure/PrefixCommands.js';
+
+export default class extends PrefixCommands {
+    constructor(client) {
+        super(client, {
+            name: 'test',
+            aliases: ['testing']
+        });
+    }
+    run = (message, args) => {
+      message.reply({ content: 'hello world' })
+    }
+}
+```
+And if you are as good as I am, everything would look like this:
+
+![](./images/starting-the-application/prefixcommand-test.png)
+
+And finally, let's verify if everything we've done is correct and fully functional. Open a new terminal and start our application with `node .`
+
+![](./images/starting-the-application/finish-prefix.png)
+
+Of course, that worked correctly. Well, gentlemen, it was an honor to create this documentation for you and teach you a bit about discord.js and class-based structure. This module will be the last for many, but if by some miracle you wish to continue honing your skills and truly studying this structure, I hope to see you in the next module [`Advanced implementation`](./advanced-implementation.md). See you there.
