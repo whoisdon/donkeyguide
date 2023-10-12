@@ -5,7 +5,7 @@ title: Installation & Preparations
 # Installation & Preparations
 ## Installing Node.js
 
-Para usar o discord.js, você precisará instalar o [`Node.js`]. discord.js v14 requer Node v16.11.0 ou superior.
+To use discord.js, you'll need to install [`Node.js`]. discord.js v14 requires Node v16.11.0 or higher.
 :::tip
 Discord.js relies on node.js because node.js serves as the "engine" that powers discord.js on your computer. It's as if discord.js were a car, and node.js were the engine propelling the car forward. Without node.js, discord.js cannot operate correctly because it lacks the necessary energy to make things happen on your computer. Therefore, node.js is a vital component for discord bots created with discord.js to run and interact with the discord platform.
 :::
