@@ -4,7 +4,7 @@ heroImage: donkey.png
 description: 'Documentation for donkeys and lazy folks.'
 actionText: Get Started →
 actionLink: /guide/
-footer: Licensed under the Apache License, Version 2.0.
+footer: Where literally anyone can learn to create and manipulate a bot in discord.js.
 ---
 :::warning
 Before we get started, let me clarify something essential: the title of this documentation, "A Guide for Donkeys," is by no means an implication that you are foolish. Quite the opposite! It's a friendly way to emphasize how easy and accessible it is to create a bot in discord.js. We believe that anyone, regardless of their prior experience, can successfully follow this guide, just as a donkey (which is notoriously stubborn and determined) can follow a straightforward path.
