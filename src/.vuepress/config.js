@@ -43,7 +43,7 @@ module.exports = {
           children: [
             "installation-preparations",
             "starting-the-application",
-            "advanced-implementation.md"
+            "advanced-implementation"
           ],
         },
       ],
