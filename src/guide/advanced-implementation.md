@@ -57,7 +57,7 @@ If you want to implement it in any of your systems already, feel free to do so. 
 Have you ever seen those Neofetch-style mosaics and been captivated, imagining yourself creating one? Well, now we're going to implement a Discord mosaic. To start, let's stay in the `Functions` folder and create a file called `createMosaic.js`.
 
 **File Map:** `src > Utils > Functions > createMosaic.js` <br>
-**Package:** [`npm i ms`](https://www.npmjs.com/package/ms) <br>
+**Package:** [`npm i moment`](https://www.npmjs.com/package/moment) <br>
 **Content:** <br>
 ```js
 import os from 'os';
