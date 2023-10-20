@@ -196,43 +196,43 @@ const searchFile = './src/Utils/.cache/.commandsCache.json';
 And finally, let's update our `registerCommands` to include this implementation of the cache system we created like this:
 ```js
 async registerCommands() {
-    this.log('Aguarde enquanto a aplicação carrega os comandos (/)...', 'system');
-  
+    this.log('Please wait while the application loads the commands (/)...', 'system');
+
     const existingCommands = this.application.commands.cache;
     const globalCommands = this.SlashCommandArray.filter(command => !command.guildCollection?.length);
     const commandsInLocalScope = this.SlashCommandArray.filter(command => command.guildCollection).map(command => Object.assign(command, command.data));
-  
+
     const filterLocalCommands = commandsInLocalScope.filter(local => !existingCommands.some(cache => cache.name === local.name));
     const booleanLocalCommands = this.cacheCommands(filterLocalCommands, false);
-  
-    const filterGlobalCommands = globalCommands.filter(global => !existingCommands.some(cache => cache.name === global.name));
+
+    const filterGlobalCommands = globalCommands filter(global => !existingCommands.some(cache => cache.name === global.name));
     const booleanGlobalCommands = this.cacheCommands(filterGlobalCommands, true);
-  
+
     if (!(booleanLocalCommands || booleanGlobalCommands)) {
-      this.log('Não há comandos para carregar. Nenhuma alteração foi efetuada!', 'cache');
-      return;
+        this.log('There are no commands to load. No changes have been made!', 'cache');
+        return;
     }
-  
+
     if (booleanGlobalCommands) {
-      await this.application.commands.set(globalCommands).catch((err) => this.log(err, 'error'));
-      this.log('Os comandos (/) com scopo globais da aplicação foram carregados com sucesso!', 'client');
+        await this.application.commands.set(globalCommands).catch((err) => this.log(err, 'error'));
+        this.log('Global scope application commands (/) have been successfully loaded!', 'client');
     }
-  
+
     if (booleanLocalCommands) {
-      for (const guildID of commandsInLocalScope.flatMap(command => command.guildCollection)) {
-        const commands = commandsInLocalScope.filter(
-          cmd => cmd.guildCollection.includes(guildID)
-        );
-  
-        const guild = this.guilds.cache.get(guildID);
-        if (!guild) {
-          this.log(`O servidor ${guild.name} (${guild.id}) está fora do cache do client`, 'error');
-          continue;
+        for (const guildID of commandsInLocalScope.flatMap(command => command.guildCollection)) {
+            const commands = commandsInLocalScope.filter(
+                cmd => cmd.guildCollection.includes(guildID)
+            );
+
+            const guild = this.guilds.cache.get(guildID);
+            if (!guild) {
+                this.log(`The server ${guild.name} (${guild.id}) is not in the client's cache`, 'error');
+                continue;
+            }
+
+            await guild.commands.set(commands).catch((err) => this.log(err, 'error'));
+            this.log(`Local scope application commands (/) have been successfully loaded in the guild: ${guild.name} (${guild.id})!`, 'client');
         }
-  
-        await guild.commands.set(commands).catch((err) => this.log(err, 'error'));
-        this.log(`Os comandos (/) com scopo local da aplicação foram carregados com sucesso na guild: ${guild.name} (${guild.id})!`, 'client');
-      }
     }
 }
 ```
