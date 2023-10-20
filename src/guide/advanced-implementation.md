@@ -8,13 +8,13 @@ First of all, congratulations! You've managed to implement our structure in your
 
 ## Adding `Utilities`
 
-The `Util` folder in our project serves a clear and valuable purpose. It acts as a central repository for all our auxiliary functions and utilities. These functions are thoughtfully organized and maintained here to enhance development efficiency, code reuse, and simplified maintenance
+The `Utils` folder in our project serves a clear and valuable purpose. It acts as a central repository for all our auxiliary functions and utilities. These functions are thoughtfully organized and maintained here to enhance development efficiency, code reuse, and simplified maintenance
 
-In our Visual Studio Code, we will create a new folder within the `src` directory. This folder will be named `Util`.
+In our Visual Studio Code, we will create a new folder within the `src` directory. This folder will be named `Utils`.
 
 ### Custom logging
 
-Alright, with the `Util` folder created, why don't we add a distinct logging system? It will be better to differentiate each action that our structure performs with meaningful colors and clear naming.
+Alright, with the `Utils` folder created, why don't we add a distinct logging system? It will be better to differentiate each action that our structure performs with meaningful colors and clear naming.
 
 So, here we go. Inside our `Utils` folder, we will create a subfolder named `Function` with a file named `getColors.js` to customize our logs.
 
