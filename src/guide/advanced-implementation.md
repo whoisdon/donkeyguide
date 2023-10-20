@@ -226,7 +226,8 @@ async registerCommands() {
 
             const guild = this.guilds.cache.get(guildID);
             if (!guild) {
-                this.log(`The server ${guild.name} (${guild.id}) is not in the client's cache`, 'error');
+                const verify = await this.guilds.fetch(guildID)
+                this.log(`The server ${verify.name} (${verify.id}) is not in the client's cache`, 'error');
                 continue;
             }
 
