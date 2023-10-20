@@ -205,7 +205,7 @@ async registerCommands() {
     const filterLocalCommands = commandsInLocalScope.filter(local => !existingCommands.some(cache => cache.name === local.name));
     const booleanLocalCommands = this.cacheCommands(filterLocalCommands, false);
 
-    const filterGlobalCommands = globalCommands filter(global => !existingCommands.some(cache => cache.name === global.name));
+    const filterGlobalCommands = globalCommands.filter(global => !existingCommands.some(cache => cache.name === global.name));
     const booleanGlobalCommands = this.cacheCommands(filterGlobalCommands, true);
 
     if (!(booleanLocalCommands || booleanGlobalCommands)) {
