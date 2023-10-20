@@ -16,7 +16,7 @@ module.exports = {
   themeConfig: {
     displayAllHeaders: true,
     repo: "whoisdon/donkeyguide",
-    docsRepo: "whoisdon/donkeyguide",
+    docsRepo: "whoisdon/donkeyguide/src/",
     docsBranch: "main",
     editLinks: true,
     lastUpdated: "Last Updated",
