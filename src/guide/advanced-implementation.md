@@ -488,7 +488,7 @@ export default class extends EventMap {
         const [cmd, ...args] = content.split(" ");
         const command = this.client.PrefixCommandArray.find((c) => c.name === cmd.toLowerCase() || c.aliases?.includes(cmd.toLowerCase()))
 
-        else if (!command) return;
+        if (!command) return;
         else if (!command?.mentionCommand && startCommand) return;
         else if (command.isPrivate && !message.guild) return;
 
