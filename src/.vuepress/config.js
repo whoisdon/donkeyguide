@@ -17,7 +17,6 @@ module.exports = {
     displayAllHeaders: true,
     repo: "whoisdon/donkeyguide",
     docsDir: 'src',
-    // docsRepo: "whoisdon/donkeyguide",
     docsBranch: "main",
     editLinks: true,
     lastUpdated: "Last Updated",
